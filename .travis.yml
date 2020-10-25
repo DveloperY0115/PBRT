@@ -2,17 +2,9 @@ language : cpp
 
 matrix:
   include:
-    - name: Test Ubuntu 16.04 + gcc-7
-      os: linux
-      apt:
-        sources:
-          - deadsnakes
-          - ubuntu-toolchain-r-test
-        packages:
-          - g++-7
-      sudo: required
-      compiler: gcc
-      env:
-        - BUILD_TYPE = Debug
+    - name: Test macOS 10.14 + Clang
+      os: osx
+      osx_image: xcode10.2
+      compiler: clang
       script:
         sh Scripts/travis_build.sh

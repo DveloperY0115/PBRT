@@ -1,5 +1,5 @@
 # CMake version
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.12)
 
 # Declare project
 project(Sources/pbrt)

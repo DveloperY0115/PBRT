@@ -27,5 +27,6 @@ include_directories(Libraries)
 include_directories(Libraries/doctest/doctest)
 
 # Project modules
+add_subdirectory(Libraries/doctest)
 add_subdirectory(Sources/pbrt)
 add_subdirectory(Tests/UnitTests)

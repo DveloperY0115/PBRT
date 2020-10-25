@@ -1,0 +1,18 @@
+language : cpp
+
+matrix:
+  include:
+    - name: Test Ubuntu 16.04 + gcc-7
+      os: linux
+      apt:
+        sources:
+          - deadsnakes
+          - ubuntu-toolchain-r-test
+        packages:
+          - g++-7
+      sudo: required
+      compiler: gcc
+      env:
+        - BUILD_TYPE = Debug
+      script:
+        sh Scripts/travis_build.sh

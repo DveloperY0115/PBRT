@@ -21,10 +21,16 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
 
+# Set enable output of compile commands during generation
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Includes
 include_directories(Sources)
 include_directories(Libraries)
 include_directories(Libraries/doctest/doctest)
+
+# Compile options
+include(CMake/CompileOptions.cmake)
 
 # Project modules
 add_subdirectory(Libraries/doctest)

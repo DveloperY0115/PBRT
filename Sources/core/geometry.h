@@ -36,7 +36,7 @@ namespace pbrt {
         }
 
         bool HasNaNs() const {
-            return isnan(x) || isnan(y);
+            return std::isnan(x) || std::isnan(y);
         }
 
         T operator[](int i) const {
@@ -126,7 +126,7 @@ namespace pbrt {
         }
 
         bool HasNaNs() const {
-            return isnan(x) || isnan(y) || isnan(z);
+            return std::isnan(x) || std::isnan(y) || std::isnan(z);
         }
 
         T operator[](int i) const {
@@ -155,7 +155,7 @@ namespace pbrt {
         }
 
         Vector3<T> operator-(const Vector3<T> &v) const {
-            return Vector3(x - v.x, y - v.y + z - v.z);
+            return Vector3<T>(x - v.x, y - v.y + z - v.z);
         }
 
         Vector3<T>& operator-=(const Vector3<T> &v) {

@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 
+namespace pbrt {
 // Global Forward Declarations
 template <typename T>
 class Vector2;
@@ -28,4 +29,5 @@ template <typename T>
 class Point2;
 template <typename T>
 class Point3;
+}
 #endif //PBRT_PBRT_H

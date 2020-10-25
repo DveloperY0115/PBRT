@@ -1,4 +1,11 @@
 //
+// Created by 유승우 on 2020/10/26.
+//
+
+#ifndef PBRT_VECMATH_HPP
+#define PBRT_VECMATH_HPP
+
+//
 // Created by 유승우 on 2020/10/23.
 //
 
@@ -10,7 +17,7 @@
 #ifndef PBRT_CORE_GEOMETRY_H
 #define PBRT_CORE_GEOMETRY_H
 
-#include "pbrt.h"
+#include <pbrt/pbrt.h>
 #include <iterator>
 #include <assert.h>
 
@@ -144,7 +151,7 @@ namespace pbrt {
         }
 
         Vector3<T> operator+(const Vector3<T> &v) const {
-            return Vector3(x + v.x, y + v.y + z + v.z);
+            return Vector3(x + v.x, y + v.y, z + v.z);
         }
 
         Vector3<T>& operator+=(const Vector3<T> &v) {
@@ -155,7 +162,7 @@ namespace pbrt {
         }
 
         Vector3<T> operator-(const Vector3<T> &v) const {
-            return Vector3<T>(x - v.x, y - v.y + z - v.z);
+            return Vector3<T>(x - v.x, y - v.y, z - v.z);
         }
 
         Vector3<T>& operator-=(const Vector3<T> &v) {
@@ -209,12 +216,12 @@ namespace pbrt {
 
         Point2() { x = 0; y = 0; }
         Point2(T x, T y)
-        : x(x), y(y) {
+                : x(x), y(y) {
             assert(!HasNaNs());
         }
 
         explicit Point2(const Point3<T> &p)
-        : x(p.x), y(p.y) {
+                : x(p.x), y(p.y) {
             assert(!HasNaNs());
         }
 
@@ -234,13 +241,13 @@ namespace pbrt {
 
         Point3() { x = 0; y = 0; z = 0; }
         Point3(T x, T y, T z)
-        : x(x), y(y), z(z) {
+                : x(x), y(y), z(z) {
             assert(!HasNaNs());
         }
 
         template <typename U>
         explicit Point3(const Point3<U> &p)
-        : x((T)p.x), y((T)p.y), z((T)p.z) {
+                : x((T)p.x), y((T)p.y), z((T)p.z) {
             assert(!HasNaNs());
         }
 
@@ -317,6 +324,11 @@ namespace pbrt {
     }
 
     template <typename T>
+    inline Vector3<T> operator*(const Vector3<T> &v, T s) {
+        return v * s;
+    }
+
+    template <typename T>
     inline Vector3<T> Abs(const Vector3<T>& v) {
         return Vector3<T>(std::abs(v.x), std::abs(v.y), std::abs(v.z));
     }
@@ -379,12 +391,10 @@ namespace pbrt {
     template <typename T>
     inline void CoordinateSystem(const Vector3<T> &v1, Vector3<T> *v2, Vector3<T> *v3) {
         if (std::abs(v1.x) > std::abs(v1.y)) {
-            *v2 = Vector3<T>(-v1.z, 0, v1.x) /
-                  sqrt(v1.x * v1.x + v1.z * v1.z);
+            *v2 = Normalize(Vector3<T>(-1 * v1.z, 0, v1.x));
         }
         else {
-            *v2 = Vector3<T>(0, v1.z, -v1.y) /
-                  sqrt(v1.y * v1.y + v1.z * v1.z);
+            *v2 = Normalize(Vector3<T>(0, v1.z, -1 * v1.y));
         }
         *v3 = Cross(v1, *v2);
     }
@@ -401,3 +411,5 @@ namespace pbrt {
 }
 
 #endif
+
+#endif //PBRT_VECMATH_HPP

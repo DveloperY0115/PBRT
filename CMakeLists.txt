@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.17)
 
 # Declare project
-project(PBRT)
+project(Sources/pbrt)
 
 # Set root directory
 if (NOT PBRT_ROOT)
@@ -28,5 +28,5 @@ include_directories(Libraries/doctest/doctest)
 
 # Project modules
 add_subdirectory(Libraries/doctest)
-add_subdirectory(Sources/core)
+add_subdirectory(Sources/pbrt)
 add_subdirectory(Tests/UnitTests)

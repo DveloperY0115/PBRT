@@ -399,6 +399,4 @@ namespace pbrt {
     }
 }
 
-#endif
-
 #endif //PBRT_VECMATH_HPP

@@ -1,21 +1,10 @@
-//
-// Created by 유승우 on 2020/10/26.
-//
-
 #ifndef PBRT_VECMATH_HPP
 #define PBRT_VECMATH_HPP
-
-//
-// Created by 유승우 on 2020/10/23.
-//
 
 #if defined(_MSC_VER)
 #define NOMINMAX
 #pragma once
 #endif
-
-#ifndef PBRT_CORE_GEOMETRY_H
-#define PBRT_CORE_GEOMETRY_H
 
 #include <pbrt/pbrt.h>
 #include <iterator>
